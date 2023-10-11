@@ -18,13 +18,21 @@ jobs:
           repo: 'golioth/thingy91-golioth'
           file: 'app_update_thingy91_v1.0.0.bin'
 
+      - name: Create random device name
+        uses: TGPSKI/name-generator-node-action@v2
+        id: generator
+        with:
+          separator: '_'
+          length: '3'
+          style: 'lowerCase'
+          
       - name: Use goliothctl
         uses: ./
         with:
           apiKey: ${{ secrets.APIKEY }}
           projectId: ${{ vars.PROJECTID }}
-          # deviceName: foobarbaz
-          # deviceTag: ci
+          deviceName: ${{ steps.generator.outputs.name }}
+          deviceTag: ci
 
     #   - name: Create Artifact
     #     uses: goliothlabs/create-artifact@main
