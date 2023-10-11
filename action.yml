@@ -33,7 +33,7 @@ runs:
         apiKey: ${{ inputs.apiKey }}
         projectId: ${{ inputs.projectId }}
 
-    - if: ${{ deviceName != '' }}
+    - if: ${{ inputs.deviceName != '' }}
       uses: ./actions/create-device
       with:
         deviceName: ${{ inputs.deviceName }}
