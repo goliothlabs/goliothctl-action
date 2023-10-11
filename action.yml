@@ -15,11 +15,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: echo "deb [trusted=yes] https://repos.golioth.io/apt/ /" | sudo tee /etc/apt/sources.list.d/golioth.list
-      shell: bash
-    - run: sudo apt update
-      shell: bash
-    - run: sudo apt install goliothctl
-      shell: bash
-    - run: goliothctl login --apiKey ${{ inputs.apiKey }} --projectId ${{ inputs.projectId }}
-      shell: bash
+    - uses: ./actions/create-device
+      with:
+        apiKey: ${{ inpus.apiKey }}
+        projectId: ${{ inputs.projectId }}
