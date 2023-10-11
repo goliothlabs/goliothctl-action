@@ -24,10 +24,10 @@ runs:
     - if: ${{ inputs.deviceName != '' }}
       run: echo "provision=true" >> $GITHUB_ENV
       shell: bash
-    - if: ${{ inputs.psk != '' && inputs.pskId != '' }}
+    - if: ${{ env.provision == 'true' && inputs.psk != '' && inputs.pskId != '' }}
       run: echo "pskDetails=--psk ${{ inputs.psk }} --pskId ${{ inputs.psk }}" >> $GITHUB_ENV
       shell: bash
-    - if: ${{ inputs.deviceTag != '' }}
+    - if: ${{ env.provision == 'true' && inputs.deviceTag != '' }}
       run: echo "tag=--tags ${{ inputs.deviceTag }}" >> $GITHUB_ENV
       shell: bash
     - if: ${{ env.provision == 'true' }}
