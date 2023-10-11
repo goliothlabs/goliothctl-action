@@ -23,8 +23,8 @@ jobs:
         with:
           apiKey: ${{ secrets.APIKEY }}
           projectId: ${{ vars.PROJECTID }}
-          deviceName: foobarbaz
-          deviceTag: ci
+          # deviceName: foobarbaz
+          # deviceTag: ci
 
     #   - name: Create Artifact
     #     uses: goliothlabs/create-artifact@main
