@@ -34,13 +34,9 @@ jobs:
           deviceTag: ci
           file: app_update_thingy91_v1.0.0.bin
           artifactVersion: 1.0.0
-
-    #   - name: Create Release
-    #     uses: goliothlabs/create-release@main
-    #     with:
-    #       artifact: main
-    #       version: 1.0.0
-    #       deviceTag: ci
+          releaseArtifact: main
+          releaseVersion: 1.0.0
+          releaseTag: ci
           
     #   - name: List devices
     #     run: goliothctl device list
