@@ -19,12 +19,11 @@ jobs:
           file: 'app_update_thingy91_v1.0.0.bin'
 
       - name: Create random device name
-        uses: TGPSKI/name-generator-node-action@v2
+        uses: tjcorr/gha-unique-name-generator@v1
         id: generator
         with:
-          separator: '_'
-          length: '3'
-          style: 'lowerCase'
+          separator: '-'
+          prefix: 'ci'
           
       - name: Use goliothctl
         uses: ./
