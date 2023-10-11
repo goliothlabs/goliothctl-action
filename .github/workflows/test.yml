@@ -26,13 +26,6 @@ jobs:
           deviceName: foobarbaz
           deviceTag: ci
 
-    #   - name: Download file for Artifact
-    #     id: dl-artifact
-    #     uses: dsaltares/fetch-gh-release-asset@master
-    #     with:
-    #       repo: 'golioth/thingy91-golioth'
-    #       file: 'app_update_thingy91_v1.0.0.bin'
-
     #   - name: Create Artifact
     #     uses: goliothlabs/create-artifact@main
     #     with:
