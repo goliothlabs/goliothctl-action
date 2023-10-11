@@ -28,7 +28,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: ./actions/create-device
+    - uses: ./actions/setup-goliothctl
       with:
         apiKey: ${{ inputs.apiKey }}
         projectId: ${{ inputs.projectId }}
