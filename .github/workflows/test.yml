@@ -38,5 +38,5 @@ jobs:
           releaseVersion: 1.0.0
           releaseTag: ci
           
-    #   - name: List devices
-    #     run: goliothctl device list
+      - name: List devices
+        run: goliothctl device list
