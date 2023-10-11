@@ -7,7 +7,7 @@ branding:
 inputs:
   deviceName:
     description: "Device name."
-    required: false
+    required: true
   psk:
     description: "Pre-shared key. Used as part of device authentication."
     required: false
@@ -21,15 +21,11 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - if: ${{ inputs.deviceName != '' }}
-      run: echo "provision=true" >> $GITHUB_ENV
-      shell: bash
-    - if: ${{ env.provision == 'true' && inputs.psk != '' && inputs.pskId != '' }}
+    - if: ${{ inputs.psk != '' && inputs.pskId != '' }}
       run: echo "pskDetails=--psk ${{ inputs.psk }} --pskId ${{ inputs.psk }}" >> $GITHUB_ENV
       shell: bash
-    - if: ${{ env.provision == 'true' && inputs.deviceTag != '' }}
+    - if: ${{ inputs.deviceTag != '' }}
       run: echo "tag=--tags ${{ inputs.deviceTag }}" >> $GITHUB_ENV
       shell: bash
-    - if: ${{ env.provision == 'true' }}
-      run: goliothctl provision --name ${{ inputs.deviceName }} ${{ env.pskDetails }} ${{ env.tag }}
+    - run: goliothctl provision --name ${{ inputs.deviceName }} ${{ env.pskDetails }} ${{ env.tag }}
       shell: bash
