@@ -1,0 +1,25 @@
+name: "Use goliothctl"
+description: "Use the Golioth CLI (goliothctl) from your GitHub Actions"
+branding:
+  icon: "cpu"
+  color: "green"
+
+inputs:
+  apiKey:
+    description: "The API Key generated via goliothctl or web console"
+    required: true
+  projectId:
+    description: "Project ID to use."
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo "deb [trusted=yes] https://repos.golioth.io/apt/ /" | sudo tee /etc/apt/sources.list.d/golioth.list
+      shell: bash
+    - run: sudo apt update
+      shell: bash
+    - run: sudo apt install goliothctl
+      shell: bash
+    - run: goliothctl login --apiKey ${{ inputs.apiKey }} --projectId ${{ inputs.projectId }}
+      shell: bash
