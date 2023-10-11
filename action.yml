@@ -31,13 +31,13 @@ inputs:
     required: false
   releaseArtifact:
     description: "Artifact to use for release."
-    required: true
+    required: false
   releaseVersion:
     description: "Artifact version to use for release."
-    required: true
+    required: false
   releaseTag:
     description: Tag used to target a release.
-    required: true
+    required: false
 
 runs:
   using: "composite"
