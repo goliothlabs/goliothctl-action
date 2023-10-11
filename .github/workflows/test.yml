@@ -33,7 +33,7 @@ jobs:
           deviceName: ${{ steps.generator.outputs.name }}
           deviceTag: ci
           file: app_update_thingy91_v1.0.0.bin
-          version: 1.0.0
+          artifactVersion: 1.0.0
 
     #   - name: Create Release
     #     uses: goliothlabs/create-release@main
