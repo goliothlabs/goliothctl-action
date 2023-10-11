@@ -32,12 +32,8 @@ jobs:
           projectId: ${{ vars.PROJECTID }}
           deviceName: ${{ steps.generator.outputs.name }}
           deviceTag: ci
-
-    #   - name: Create Artifact
-    #     uses: goliothlabs/create-artifact@main
-    #     with:
-    #       file: app_update_thingy91_v1.0.0.bin
-    #       version: 1.0.0
+          file: app_update_thingy91_v1.0.0.bin
+          version: 1.0.0
 
     #   - name: Create Release
     #     uses: goliothlabs/create-release@main

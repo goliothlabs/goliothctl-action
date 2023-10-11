@@ -23,7 +23,12 @@ inputs:
   deviceTag:
     description: "Tag used to target a release."
     required: false
-
+  file:
+    description: "File to use for artifact."
+    required: false
+  artifactVersion:
+    description: "Artifact semantic version."
+    required: false
 
 runs:
   using: "composite"
@@ -40,3 +45,9 @@ runs:
         psk: ${{ inputs.psk }}
         pskId: ${{ inputs.pskId }}
         deviceTag: ${{ inputs.deviceTag }}
+
+    - if: ${{ inputs.file != '' }}
+      uses: ./actions/create-artifact
+      with:
+        file: ${{ inputs.file }}
+        version: ${{ inputs.artifactVersion }}
