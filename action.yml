@@ -17,5 +17,5 @@ runs:
   steps:
     - uses: ./actions/create-device
       with:
-        apiKey: ${{ inpus.apiKey }}
+        apiKey: ${{ inputs.apiKey }}
         projectId: ${{ inputs.projectId }}
