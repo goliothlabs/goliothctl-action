@@ -60,7 +60,7 @@ There are 3 additional "create" actions currently supported for devices, artifac
   uses: actions/checkout@v4
     
 - name: Use goliothctl
-  uses: ./
+  uses: goliothlabs/goliothctl-action@main
   with:
     apiKey: ${{ secrets.APIKEY }}
     projectId: ${{ vars.PROJECTID }}
