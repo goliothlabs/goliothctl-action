@@ -26,25 +26,25 @@ jobs:
           prefix: 'ci'
           
       - name: Setup goliothctl
-        uses: ./.github/setup-goliothctl
+        uses: ./actions/setup-goliothctl
         with:
           apiKey: ${{ secrets.APIKEY }}
           projectId: ${{ vars.PROJECTID }}
 
       - name: Create device
-        uses: ./.github/create-device
+        uses: ./actions/create-device
         with:
           deviceName: ${{ steps.generator.outputs.name }}
           deviceTag: ci
 
       - name: Create artifact
-        uses: ./.github/create-artifact
+        uses: ./actions/create-artifact
         with:
           file: app_update_thingy91_v1.0.0.bin
           version: 1.0.0
 
       - name: Create release
-        uses: ./.github/create-release
+        uses: ./actions/create-release
         with:
           releaseArtifact: main
           releaseVersion: 1.0.0
