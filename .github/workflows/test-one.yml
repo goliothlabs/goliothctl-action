@@ -46,6 +46,6 @@ jobs:
       - name: Create release
         uses: ./actions/create-release
         with:
-          releaseArtifact: main
-          releaseVersion: 1.0.0
+          artifact: main
+          version: 1.0.0
           releaseTag: ci
