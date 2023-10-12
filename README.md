@@ -88,3 +88,37 @@ Each step is optional, ex. only create a release.
     releaseVersion: #SOME_VERSION
     releaseTag: #SOME_TAG#
 ```
+
+# Discrete Actions
+
+You can also use the steps as discrete actions if you prefer to be more explicit. Below is the example usage.
+
+```yaml
+- name: Checkout
+  uses: actions/checkout@v4
+
+- name: Setup goliothctl
+  uses: goliothlabs/goliothctl-action/actions/setup-goliothctl@main
+  with:
+    apiKey: ${{ secrets.APIKEY }}
+    projectId: ${{ vars.PROJECTID }}
+
+- name: Create device
+  uses: goliothlabs/goliothctl-action/actions/create-device@main
+  with:
+    deviceName: ${{ steps.generator.outputs.name }}
+    deviceTag: ci
+
+- name: Create artifact
+  uses: goliothlabs/goliothctl-action/actions/create-artifact@main
+  with:
+    file: app_update_thingy91_v1.0.0.bin
+    version: 1.0.0
+
+- name: Create release
+  uses: goliothlabs/goliothctl-action/actions/create-release@main
+  with:
+    artifact: main
+    version: 1.0.0
+    releaseTag: ci
+```
