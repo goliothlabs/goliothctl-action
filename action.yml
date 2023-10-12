@@ -66,4 +66,4 @@ runs:
       with:
         artifact: ${{ inputs.releaseArtifact }}
         version: ${{ inputs.releaseVersion }}
-        deviceTag: ${{ inputs.releaseTag }}
+        releaseTag: ${{ inputs.releaseTag }}

@@ -1,0 +1,51 @@
+name: Test individual actions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download file for Artifact
+        id: dl-artifact
+        uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          repo: 'golioth/thingy91-golioth'
+          file: 'app_update_thingy91_v1.0.0.bin'
+
+      - name: Create random device name
+        uses: tjcorr/gha-unique-name-generator@v1
+        id: generator
+        with:
+          separator: '-'
+          prefix: 'ci'
+          
+      - name: Setup goliothctl
+        uses: ./.github/setup-goliothctl
+        with:
+          apiKey: ${{ secrets.APIKEY }}
+          projectId: ${{ vars.PROJECTID }}
+
+      - name: Create device
+        uses: ./.github/create-device
+        with:
+          deviceName: ${{ steps.generator.outputs.name }}
+          deviceTag: ci
+
+      - name: Create artifact
+        uses: ./.github/create-artifact
+        with:
+          file: app_update_thingy91_v1.0.0.bin
+          version: 1.0.0
+
+      - name: Create release
+        uses: ./.github/create-release
+        with:
+          releaseArtifact: main
+          releaseVersion: 1.0.0
+          releaseTag: ci

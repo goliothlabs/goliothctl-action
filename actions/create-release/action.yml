@@ -11,12 +11,12 @@ inputs:
   version:
     description: "Artifact version to use for release."
     required: true
-  deviceTag:
+  releaseTag:
     description: Tag used to target a release.
     required: true
 
 runs:
   using: "composite"
   steps:
-    - run: goliothctl dfu release create --components ${{ inputs.artifact }}@${{ inputs.version }} --tags ${{ inputs.deviceTag }}
+    - run: goliothctl dfu release create --components ${{ inputs.artifact }}@${{ inputs.version }} --tags ${{ inputs.releaseTag }}
       shell: bash
