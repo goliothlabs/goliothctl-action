@@ -75,3 +75,16 @@ There are 3 additional "create" actions currently supported for devices, artifac
 
 Each step is optional, ex. only create a release.
 
+```yaml
+- name: Checkout
+  uses: actions/checkout@v4
+    
+- name: Use goliothctl
+  uses: goliothlabs/goliothctl-action@main
+  with:
+    apiKey: ${{ secrets.APIKEY }}
+    projectId: ${{ vars.PROJECTID }}
+    releaseArtifact: #SOME_ARTIFACT#
+    releaseVersion: #SOME_VERSION
+    releaseTag: #SOME_TAG#
+```
